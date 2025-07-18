@@ -192,9 +192,9 @@ const ChatInput = ({
     setMessage({
       deep: flag,
       sikao: flag2,
-      selectedValue,
-      selectedValue2,
-      selectedValue3
+      selectedValue: selectedValue || '', // 默认空字符串
+      selectedValue2: selectedValue2 || '', // 自定义默认值
+      selectedValue3: selectedValue3 || ''
     });
   };
 
@@ -241,9 +241,10 @@ const ChatInput = ({
     stopSpeak,
     startSpeak,
     speakingTimeString,
-    renderAudioGraph,
+    // renderAudioGraph,
     stream
   } = useSpeech({ appId, ...outLinkAuthData });
+
   const onWhisperRecord = useCallback(() => {
     const finishWhisperTranscription = (text: string) => {
       if (!text) return;
@@ -285,12 +286,12 @@ const ChatInput = ({
     source.connect(analyser);
     const renderCurve = () => {
       if (!canvasRef.current) return;
-      renderAudioGraph(analyser, canvasRef.current);
+      // renderAudioGraph(analyser, canvasRef.current);
       window.requestAnimationFrame(renderCurve);
     };
 
     renderCurve();
-  }, [renderAudioGraph, stream]);
+  }, [stream]);
 
   const RenderTranslateLoading = useMemo(
     () => (

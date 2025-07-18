@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction} from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
 
 // 1. 首先定义消息对象的类型

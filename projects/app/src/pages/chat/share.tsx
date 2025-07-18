@@ -58,6 +58,7 @@ type Props = {
   customUid: string;
   showRawSource: boolean;
   showNodeStatus: boolean;
+  responseDetail?: boolean;
 };
 
 // 添加蓝色小人组件
@@ -324,8 +325,6 @@ const OutLink = (props: Props) => {
           '& .chakra-box': {
             backgroundColor: '#f0f3f9 !important'
           }
-
-          
         }}
       >
         {Children}
@@ -639,8 +638,9 @@ const Render = (props: Props) => {
         showRouteToAppDetail={false}
         showRouteToDatasetDetail={false}
         isShowReadRawSource={props.showRawSource}
-        isResponseDetail={props.responseDetail}
-         isShowFullText={props.showFullText}
+        //  isResponseDetail={props.responseDetail}
+        isResponseDetail={props.responseDetail ?? false}
+        // isShowFullText={props.showFullText}
         showNodeStatus={props.showNodeStatus}
       >
         <ChatRecordContextProvider params={chatRecordProviderParams}>
@@ -684,7 +684,7 @@ export async function getServerSideProps(context: any) {
       appIntro: app?.associatedApp?.intro ?? 'AI',
       showRawSource: app?.showRawSource ?? false,
       responseDetail: app?.responseDetail ?? false,
-       showFullText: app?.showFullText ?? false,
+      // showFullText: app?.showFullText ?? false,
       showNodeStatus: app?.showNodeStatus ?? false,
       shareId: shareId ?? '',
       authToken: authToken ?? '',

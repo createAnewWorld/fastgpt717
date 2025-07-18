@@ -301,6 +301,7 @@ export const useSpeech = (props?: OutLinkChatAuthProps & { appId?: string }) => 
     isTransCription,
     renderAudioGraphPc,
     renderAudioGraphMobile,
+
     stream: mediaStream,
     speakingTimeString
   };
